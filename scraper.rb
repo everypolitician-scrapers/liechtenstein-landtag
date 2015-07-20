@@ -20,26 +20,15 @@ def noko_for(url)
   Nokogiri::HTML(open(url).read) 
 end
 
-def party_info(text)
-  if text =~ /Fiji First/i
-    return [ "Fiji First", "FF" ]
-  elsif text =~ /SODELPA/
-    return [ "Social Democratic Liberal Party" , "SODELPA" ]
-  elsif text =~ /NATIONAL FEDERATION PARTY/
-    return [ "National Federation Party" , "NFP" ]
-  else
-    warn "Unknown party: #{text}"
-  end
-end
-
 def scrape_list(termid, url)
   noko = noko_for(url)
 
+  count = 0
   noko.css('div#personlist .regionheader').each do |region|
     region.xpath('.//following-sibling::table[1]//td').each do |mp|
       info = mp.css('div.personinfo')
+      next if mp.xpath('.//preceding::h2').count == 2
       next if mp.css('h3').text.empty?
-       # binding.pry
       data = { 
         id: mp.css('div.overlaybox/@data-item').text,
         name: mp.css('h3').text.tidy,
@@ -51,9 +40,12 @@ def scrape_list(termid, url)
         term: termid,
         source: url,
       }
+      count+=1
+      # puts data
       ScraperWiki.save_sqlite([:name, :term], data)
     end
   end
+  puts "Added #{count}"
 end
 
 terms = { 
