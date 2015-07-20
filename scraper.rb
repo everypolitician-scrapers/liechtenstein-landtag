@@ -65,5 +65,5 @@ terms.each do |id, url|
   }
   puts term
   ScraperWiki.save_sqlite([:id], term, 'terms')
-  scrape_list(id, url)
+  scrape_list(start_date, url)
 end
