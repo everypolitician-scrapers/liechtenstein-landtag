@@ -41,7 +41,7 @@ def scrape_list(termid, url)
         source: url,
       }
       count+=1
-      # puts data
+      # puts data
       ScraperWiki.save_sqlite([:name, :term], data)
     end
   end
@@ -56,14 +56,5 @@ terms = {
 
 terms.each do |id, url|
   start_date, end_date = id.split('-')
-  term = { 
-    id: start_date,
-    name: id,
-    start_date: start_date,
-    end_date: end_date,
-    source: url,
-  }
-  puts term
-  ScraperWiki.save_sqlite([:id], term, 'terms')
   scrape_list(start_date, url)
 end
