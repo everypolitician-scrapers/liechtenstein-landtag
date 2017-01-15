@@ -48,6 +48,7 @@ terms = {
   '2005-2009' => 'http://www.landtag.li/personen.aspx?nid=4158&auswahl=4158&lang=de&jahr=2005&sitzordnung=0',
 }
 
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
 terms.each do |id, url|
   start_date, end_date = id.split('-')
   scrape_list(start_date, url)
