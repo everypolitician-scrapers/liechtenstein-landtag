@@ -29,15 +29,17 @@ response:
     - Accept-Encoding
     Server:
     - Microsoft-IIS/7.5
+    Set-Cookie:
+    - ASP.NET_SessionId=25mon14cypkaqffeelunzzkr; path=/; HttpOnly
     X-Aspnet-Version:
     - 4.0.30319
     X-Powered-By:
     - ASP.NET
     Date:
-    - Tue, 28 Feb 2017 17:38:16 GMT
+    - Wed, 01 Mar 2017 14:48:59 GMT
     Content-Length:
-    - '239898'
+    - '239966'
   body:
     encoding: ASCII-8BIT
   http_version: 
-recorded_at: Tue, 28 Feb 2017 17:38:16 GMT
+recorded_at: Wed, 01 Mar 2017 14:48:59 GMT
