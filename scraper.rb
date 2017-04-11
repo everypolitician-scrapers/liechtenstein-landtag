@@ -53,6 +53,10 @@ class MemberDiv < Scraped::HTML
     noko.xpath('preceding::h3').map(&:text).last
   end
 
+  field :end_date do
+    noko.css('.name').text[/Zurückgetreten am (\d{2}.\d{2}.\d{4})/, 1].to_s.split('.').reverse.join('-')
+  end
+
   field :source do
     url
   end
