@@ -49,7 +49,7 @@ class MemberDiv < Scraped::HTML
   end
 
   field :region do
-    noko.xpath('preceding::h3').text
+    noko.xpath('preceding::h3').map(&:text).last
   end
 
   field :source do
