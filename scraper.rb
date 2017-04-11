@@ -12,6 +12,7 @@ require 'scraped_page_archive/open-uri'
 
 class MembersPage < Scraped::HTML
   field :members do
+    noko.xpath('//h2[.="Stellvertreter der Abgeordneten"]//following::*').remove
     noko.css('div#personen .member').map do |mp|
       fragment mp => MemberDiv
     end
