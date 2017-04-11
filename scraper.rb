@@ -10,34 +10,66 @@ require 'scraperwiki'
 # OpenURI::Cache.cache_path = '.cache'
 require 'scraped_page_archive/open-uri'
 
-def noko_for(url)
-  Nokogiri::HTML(open(url).read)
+class MembersPage < Scraped::HTML
+  field :members do
+    noko.css('div#personen .member').map do |mp|
+      fragment mp => MemberDiv
+    end
+  end
+end
+
+class MemberDiv < Scraped::HTML
+  field :id do
+    noko.at_css('@data-id').text
+  end
+
+  field :name do
+    noko.css('.name a').text.tidy
+  end
+
+  field :image do
+    noko.css('.pic @style').text[/(http:.*?.jpg)/, 1]
+  end
+
+  field :email do
+    noko.css('.email a/@href').text.sub('mailto:', '')
+  end
+
+  field :party do
+    popup[1]
+  end
+
+  field :party_id do
+    popup[1]
+  end
+
+  field :birth_date do
+    popup[2].to_s.split('.').reverse.join('-')
+  end
+
+  field :region do
+    noko.xpath('preceding::h3').text
+  end
+
+  field :source do
+    url
+  end
+
+  private
+
+  def popup
+    noko.at_css('.pic div p').children.map(&:text).reject(&:empty?)
+  end
 end
 
 def scrape_list(termid, url)
-  noko = noko_for(url)
-
-  count = 0
-  noko.css('div#personen .member').each do |mp|
-    popup = mp.at_css('.pic div p').children.map(&:text).reject(&:empty?)
-
-    data = {
-      id:         mp.at_css('@data-id').text,
-      name:       mp.css('.name a').text.tidy,
-      image:      mp.css('.pic @style').text[/(http:.*?.jpg)/, 1],
-      email:      mp.css('.email a/@href').text.sub('mailto:',''),
-      party:      popup[1],
-      party_id:   popup[1],
-      birth_date: popup[2].to_s.split('.').reverse.join('-'),
-      region:     mp.xpath('preceding::h3').text,
-      term:       termid,
-      source:     url,
-    }
-    count += 1
-    # puts data
-    ScraperWiki.save_sqlite(%i(name term), data)
+  page = MembersPage.new(response: Scraped::Request.new(url: url).response)
+  data = page.members.map do |mem|
+    mem.to_h.merge(term: termid)
   end
-  puts "Added #{count}"
+
+  # puts data.map { |mem| mem.reject { |k, v| v.to_s.empty? }.sort_by { |k, v| k }.to_h }
+  ScraperWiki.save_sqlite(%i(name term), data)
 end
 
 terms = {
