@@ -84,5 +84,5 @@ terms = {
   2005 => 'http://www.landtag.li/abgeordnete/?jahr=2005',
 }
 
-ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 terms.each { |id, url| scrape_list(id, url) }
