@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Mitglieder - Abgeordnete
+</title><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" /><meta content="Parlamentsdienst des Fürstentums Liechtenstein" lang="de" name="author" /><meta content="Landtag, Fürstentum Liechtenstein, Landtagsprotokoll, Abgeordnete, Präsident, Landtagspräsident, Protokoll, Kommissionen, Gremien" lang="de" name="keywords" /><meta content="Landtag des Fürstentum Liechtensteins" lang="de" name="description" /><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><link href="/images/favicon.ico" rel="shortcut icon" type="image/png" /><link href="/styles/normalize.css" rel="stylesheet" /><link href="/styles/style.css?t=1" rel="stylesheet" /><link href="/styles/landtag-master.css?t=1" rel="stylesheet" />
+
+    <script type="text/javascript" src="/scripts/selectivizr-min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery-1.10.2.min.js"></script>
+
+    <style type="text/css">
+        @import url("http://fast.fonts.com/t/1.css?apiType=css&projectid=37f9d5bf-8616-4c7a-bebd-cb9a264f95f3");
+        @font-face{
+        font-family:"Minion W08 Md Cd Cp";
+        src:url("/Fonts/695714a9-74d7-408a-8921-f2bc641128ba.eot?#iefix");
+        src:url("/Fonts/695714a9-74d7-408a-8921-f2bc641128ba.eot?#iefix") format("eot"),url("/Fonts/b85deb54-38c4-4cb4-b237-822b647d4d18.woff") format("woff"),url("/Fonts/3077b7e8-7574-42d9-adfa-3d4279fb5ae4.ttf") format("truetype"),url("/Fonts/e939c7e3-7a5c-497d-9281-50b828270506.svg#e939c7e3-7a5c-497d-9281-50b828270506") format("svg");
+        }
+    </style>
+
+    
+    <style type="text/css">
+        
+        .personen .text     { width:100%; clear:both; }
+        .personen .box      { width:100%; clear:both; background-color:#deddc9;  }
+        .personen .list     { width:100%; clear:both; }
+
+        .personen .box > .box-head          { width:100%; padding:0.5em 1em 0.5em 1em; background-color:#3a4654; }
+        .personen .box > .box-body          { background-color:#deddc9; padding:2em; }
+
+        .personen .box > .box-head > h2     { float:left; color:white; margin:0em; }
+        .personen .box > .box-head > select { float:right; padding:0.4em 2.5em 0.4em 1em; margin-top:0.2em; }
+
+        .personen .box > .box-body > .pie       { float:right; text-align:right; padding-top:4em; }
+        .personen .box > .box-body > .leaders   { float:left; width:calc(100% - 45em); max-width:40em; }
+        /*.personen .jahr2017 .box > .box-body > .leaders   { display:none; }
+        .personen .jahr2017 .box > .box-body > .pie   { width:100%; text-align:center; }
+        .personen .jahr2017 .box > .box-body > .pie > .seats { max-width:60em; float:none; display:inline-block; }*/
+
+        .personen .box > .box-body > .pie > img     { width:100%; max-width:60em; }
+        .personen .box > .box-body > .pie > .seats  { width:100%; padding-top:1em; }
+        .personen .box > .box-body > .pie > .seats > div    { float:left; width:25%; text-align:center;  }
+        .personen .box > .box-body > .pie > .seats > div b  { font-size:1.8em;  }
+        .personen .box > .box-body > .pie > .seats > div i  { font-size:1.5em; font-weight:normal; font-style:normal; }
+        .personen .box > .box-body > .pie > .seats[data-count="3"] > div    { width:33%; }
+
+        .personen .list > div       { width:100%; clear:both; display:block; }
+        .personen .list > h2        { width:100%; clear:both; display:block; margin:2em 0em 0em 0em; }
+
+        .personen .list > div > h2  { width:100%; clear:both; display:block; margin:2em 0em 0em 0em; }
+        .personen .list > div > h3  { width:100%; clear:both; display:block; font-family:Arial; color:#003752; background-color:#edede3; font-size:1.8em; padding:0.5em 1em 0.5em 1em; margin:2em 0em 0.2em 0em; }
+
+        .member                 { width:16.4%; float:left; margin-right:0.3%; height:33em; cursor:pointer; }
+        .list .member:nth-child(6n+1) { margin-right:0%; float:right; }
+        .member > .pic          { height:80%; background-color:#EDEDE3; background-repeat:no-repeat; background-position:center top; background-size:cover; position:relative; top:0em; left:0em; overflow:hidden; border-bottom:solid 5px transparent; }
+        .member > .pic.fbp      { border-bottom-color:#1273b8; }
+        .member > .pic.vu       { border-bottom-color:#e32d3d; }
+        .member > .pic.du       { border-bottom-color:#e5cf29; }
+        .member > .pic.fl       { border-bottom-color:#c9c9c9; }
+        .member > .name         { height:20%; font-family: 'Minion W08 Md Cd Cp'; font-weight: normal; color:#1B283B; width: 100%; text-align: center; padding:0.5em 0em 0em 0.8em; }
+
+        .member > .pic > div            { width: 100%; height:100%; background-color:rgba(17,38,57,0.9); padding:1em; color:white; position:absolute; bottom:-30em; left:0em; color:white;  }
+        .member > .pic > div > h4       { font-size: 1.5em; color:white; font-weight:bold; margin:0em; font-family:Arial; }
+        .member > .pic > div > p        { font-size: 1.5em; color:white; margin:0em; }
+        .member > .pic > div > ul       { margin-top:2em }
+
+        .member > .pic > div > ul li            { padding:0.3em 0em 0.3em 3em; background-position:left center; background-size:2em; background-repeat:no-repeat; }
+        .member > .pic > div > ul li.telefon    { background-image:url(/images/ico_kontakt_telefon.png); }
+        .member > .pic > div > ul li.email      { background-image:url(/images/persons/ico_mail.png); }
+        .member > .pic > div > ul li.platz      { background-image:url(/images/persons/ico_sitzplatz.png); }
+        .member > .pic > div > ul li.func       { background-image:url(/images/ico_funktionen.png); }
+        .member > .pic > div > ul li.pdf        { background-image:url(/images/ico_lebenslauf_br.png); }
+        .member > .pic > div > ul a             { font-size:1.4em; color:#b1a37e; cursor:pointer; }
+
+        .member > .name > a     { margin:0em; font-size:1.8em; line-height:1.4em; color:#003752; margin-top:0.5em; }
+        .member > .name > i     { font-size:1.4em; font-style:normal; font-family:Arial; color:inherit; }
+        .member > .name > em    { font-size:1.2em; font-style:normal; font-family:Arial; color:inherit; }
+       
+        .personen .leaders > .member { width:49%; margin-right:1%; }
+
+        .personen #iframebox { position:fixed; }
+
+        @media screen and (max-width:1024px) 
+        {
+            .list .member { width: 19.7%; }
+            .list .member:nth-child(6n+1) { margin-right:0.3%; float:left; }
+            .list .member:nth-child(5n+1) { margin-right:0%; float:right; }
+        }
+
+        @media screen and (max-width:980px){
+
+            .personen .box > .box-body > .pie       { width:50%; }
+            .personen .box > .box-body > .leaders   { width:50%; }
+        }
+
+        @media screen and (max-width:768px){
+
+            .personen .box > .box-body > .pie       { width:100%; clear:both; padding-top:0em; text-align:center; }
+            .personen .box > .box-body > .leaders   { width:100%; clear:both; padding-top:1em; text-align:center; }
+           
+
+            .list .member                 { width: 24.7%; }
+            .list .member:nth-child(5n+1) { margin-right:0.3%; float:left; }
+            .list .member:nth-child(6n+1) { margin-right:0.3%; float:left; }
+            .list .member:nth-child(4n+1) { margin-right:0%; float:right; }
+        }
+
+        @media screen and (max-width:660px)
+        {
+            .personen .box > .box-head          { background-color:transparent; padding:2em; }
+            .personen .box > .box-head > h2     { display:none; }
+            .personen .box > .box-head > select { width:100%; float:none; }
+
+            .list .member                 { width: 32.7%; margin-right:0.8%; }
+            .list .member:nth-child(4n+1) { margin-right:0.8%; float:left; }
+            .list .member:nth-child(5n+1) { margin-right:0.8%; float:left; }
+            .list .member:nth-child(6n+1) { margin-right:0.8%; float:left; }
+            .list .member:nth-child(3n+1) { margin-right:0%; float:right; }
+        }
+
+        @media screen and (max-width:475px){
+
+            .personen .text { display:none; }
+
+            .list .member                 { width: 49.2%; margin-right:1%; height:18em; }
+            .list .member:nth-child(4n+1) { margin-right:1%; float:left; }
+            .list .member:nth-child(5n+1) { margin-right:1%; float:left; }
+            .list .member:nth-child(6n+1) { margin-right:1%; float:left; }
+            .list .member:nth-child(3n+1) { margin-right:1%; float:left; }
+            .list .member:nth-child(2n+1) { margin-right:0%; float:right; }
+            .list .member:first-of-type   { float:left; }
+        }
+    </style>
+</head>
+<body class="without-js">
+    <form method="post" action="./?jahr=2013" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwMDEwMDA1NzFkZG+qCT7TKR06DabbiZyp4NcRtQCcfg0DBePlGxHog0dE" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7B21B4B3" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAaE6BV2ThqTzMUTedKDirF3MlbI6qo28uj6vJ+b0Uz2Fzzr+oW/vGvZ+YxIdo5mvBHKY0/SaPRZPgC0mqcdKuKuVefqjJF+DgM+BRCFlh4Q/GX+66bUVo5vY+WEjoJeyPctTyZEMpUUCR0zrfEvZ9nydd4fLKjsF3Y9s0PlrTefeQ==" />
+        <div id="back" class="backimage" style="background-image:url(http://www.landtag.li/files/header/header_klein_03.jpg);"><div></div></div>
+        <div class="page fullwidth personen">
+            <div class="header">
+                <div class="logo">
+                    <a href="/de"><img src="/images/img_logo_top_klein.png" alt="Logo" /></a>
+                    <div class="text"><p>T. +423 236 65 71<br />F. +423 236 65 80<br /><a href="mailto:info@landtag.li">info@landtag.li</a></p></div>
+                </div>
+                <nav>
+                    <div class="top">
+                        <div class="search">           
+                            <input name="ctl00$txtKeywords" type="text" id="txtKeywords" data-default="Suchbegriff..." />
+                            <a><img src="/images/btn_suche_top_on.png" alt="suche" /></a>
+                        </div>
+                        <ul class="quicklinks"><li data-id="5331" ><a href="/login" target="_self">Login</a></li><li data-id="4038" ><a href="/lageplan" target="_self">Lageplan</a></li><li data-id="4037" ><a href="/kontakt" target="_self">Kontakt</a></li><li data-id="4039" ><a href="/sitemap" target="_self">Sitemap</a></li><li data-id="4040" ><a href="/links" target="_self">Links</a></li><li data-id="4041" ><a href="/impressum" target="_self">Impressum</a></li><li data-id="4042" accesskey="0"><a href="http://bf.gmg.biz/default.aspx?prid=13&amp;nid=4042&amp;groupnr=4042&amp;lang=de" target="_blank">Barrierefreiheit</a></li>
+                                <li class="la"><a href="/de">DE</a></li>
+                                <li class="la"><a href="/en">EN</a></li>
+                                </ul>
+                            
+                        <ul class="mainlinks"><li data-id="4044"><a href="/funktion" target="_self">Landtag</a><img src="/images/img_menue_pfeil.png" /></li><li data-id="4061"><a href="/abgeordnete" target="_self">Mitglieder</a><img src="/images/img_menue_pfeil.png" /></li><li data-id="4062"><a href="/gremien" target="_self">Gremien</a><img src="/images/img_menue_pfeil.png" /></li><li data-id="4069"><a href="/agenda" target="_self">Agenda</a><img src="/images/img_menue_pfeil.png" /></li><li data-id="4070"><a href="/landtagsprotokolle" target="_self">Dokumentation</a><img src="/images/img_menue_pfeil.png" /></li><li data-id="4080"><a href="/service" target="_self">Service</a><img src="/images/img_menue_pfeil.png" /></li></ul>
+                    </div>
+                    <div class="sub">
+                        <ul class="sublinks"><li data-id="4158"><a href="/abgeordnete" target="_self">Abgeordnete</a></li><li data-id="4159"><a href="/praesidenten" target="_self">Präsidenten</a></li></ul>
+                        
+                    </div>
+                </nav>
+            </div>
+            <div class="header-mobile">
+                <a href="/de"><img src="/images/img_logo.png" alt="logo mobile" /></a>
+                <a class="menutrigger"><img src="/images/ico_menue.png" /></a>
+            </div>
+            <main>
+                <div>
+                    <nav class="state">
+                        <a href="/default.aspx">Startseite</a><img class="sep" src="/images/ico_status_pfeil.png" alt="seperator">
+                                <a href="/abgeordnete" id="repState_a_0" class="state">Mitglieder</a>
+                            <img class="sep" src="/images/ico_status_pfeil.png" alt="seperator">
+                                <a href="/abgeordnete" id="repState_a_1" class="state">Abgeordnete</a>
+                            
+                    </nav>
+                    <div class="headline clear-float">
+                        
+                        <h1 id="h1">Abgeordnete</h1>
+                        <img src="/images/ico_info.png" alt="aside info" class="info" />
+                    </div>
+                    
+                    <section>
+                        
+    <div id="personen" class="jahr2013">
+        <div id="content_intro" class="text"><div class="article template-imageleft"><div class="template-imageleft" data-images="0"><p>Der Liechtensteinische Landtag besteht aus 25 Abgeordneten. Er &uuml;bt seine Rechte in den Sitzungen des Gesamtlandtags aus. Auch die Detailberatung von Gesetzen erfolgt in der Regel im Plenum. Er wird deshalb als "Arbeitsparlament" charakterisiert. Im Vergleich zu andern Parlamenten&nbsp;werden wenig Aufgaben an Kommissionen delegiert. Soweit Kommissionen gebildet werden, kommt diesen weitgehend nur die Aufgabe zu, bestimmte Gesch&auml;fte f&uuml;r den Gesamtlandtag vorzubereiten und entsprechende Antr&auml;ge zu formulieren.</p><br class="clearing"></div></div></div>
+        <div class="box">
+            <div class="box-head">
+                <h2>Legislaturperiode 2013 - 2017</h2>
+                <select name="ctl00$content$ddYears" id="content_ddYears" class="styled-select ddyears">
+	<option value="30.03.2017">2017 - 2021</option>
+	<option selected="selected" value="30.03.2013">2013 - 2017</option>
+	<option value="30.04.2009">2009 - 2013</option>
+	<option value="30.04.2005">2005 - 2009</option>
+
+</select>
+                <br class="clearing" />
+            </div>
+            <div class="box-body">
+                <div class="pie">
+                    <img src="/images/img_mandatsverteilung_2013.png" alt="piechart" class="semipiechart" />
+                    <div class="seats" data-count="4">
+                        
+                                <div>
+                                    <b>FBP</b><br />
+                                    <i>10</i>
+                                </div>
+                            
+                                <div>
+                                    <b>FL</b><br />
+                                    <i>3</i>
+                                </div>
+                            
+                                <div>
+                                    <b>DU</b><br />
+                                    <i>4</i>
+                                </div>
+                            
+                                <div>
+                                    <b>VU</b><br />
+                                    <i>8</i>
+                                </div>
+                            
+                    </div>
+                </div>
+                <div class="leaders">
+                    
+                            <div id="content_repLeaders_div_0" class="member" data-id="161"><div class="pic fbp" data-id="161" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/albert_frick.jpg)"><div><p><b>Frick  Albert</b><br/>FBP<br/>21.10.1948</p><ul><li class="email"><a href="mailto:albert.frick@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li><li class="pdf"><a href="http://www.landtag.li/files/attachments/Frick_Albert_D2.pdf" target="_blank">Lebenslauf</a></li></ul></div></div><div class="name"><a>Frick  Albert</a><br/><i>Präsident</i></div></div>
+                        
+                            <div id="content_repLeaders_div_1" class="member" data-id="117"><div class="pic vu" data-id="117" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/violanda_lanter_keller.jpg)"><div><p><b>Lanter-Koller  Violanda</b><br/>VU<br/>01.01.1964</p><ul><li class="email"><a href="mailto:violanda.lanter-koller@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Lanter-Koller  Violanda</a><br/><i>Vizepräsidentin</i></div></div>
+                        
+                </div>
+                <br class="clearing" />
+            </div>
+        </div>
+        <div class="list">
+
+            
+                    <div>
+                    <h3>Oberland</h3>
+                
+                    <div id="content_repMembersOL_div_0" class="member" data-id="153"><div class="pic fbp" data-id="153" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/christian_batliner.jpg)"><div><p><b>Batliner  Christian</b><br/>FBP<br/>07.09.1968</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Batliner  Christian</a></div></div>
+                
+                    <div id="content_repMembersOL_div_1" class="member" data-id="104"><div class="pic fbp" data-id="104" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/alois_beck.jpg)"><div><p><b>Beck Alois</b><br/>FBP<br/>27.09.1962</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Beck Alois</a></div></div>
+                
+                    <div id="content_repMembersOL_div_2" class="member" data-id="105"><div class="pic vu" data-id="105" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/christoph_beck.jpg)"><div><p><b>Beck Christoph</b><br/>VU<br/>17.10.1978</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Beck Christoph</a></div></div>
+                
+                    <div id="content_repMembersOL_div_3" class="member" data-id="161"><div class="pic fbp" data-id="161" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/albert_frick.jpg)"><div><p><b>Frick  Albert</b><br/>FBP<br/>21.10.1948</p><ul><li class="email"><a href="mailto:albert.frick@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li><li class="pdf"><a href="http://www.landtag.li/files/attachments/Frick_Albert_D2.pdf" target="_blank">Lebenslauf</a></li></ul></div></div><div class="name"><a>Frick  Albert</a></div></div>
+                
+                    <div id="content_repMembersOL_div_4" class="member" data-id="113"><div class="pic vu" data-id="113" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/frank_konrad_634995612576476250.jpg)"><div><p><b>Konrad Frank</b><br/>VU<br/>09.05.1967</p><ul><li class="email"><a href="mailto:frank.konrad@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Konrad Frank</a></div></div>
+                
+                    <div id="content_repMembersOL_div_5" class="member" data-id="114"><div class="pic fl" data-id="114" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/helen_konzett_bargetze.jpg)"><div><p><b>Konzett Helen</b><br/>FL<br/>20.09.1972</p><ul><li class="email"><a href="mailto:helen.konzett@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Konzett Helen</a></div></div>
+                
+                    <div id="content_repMembersOL_div_6" class="member" data-id="115"><div class="pic fl" data-id="115" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/thomas_lageder.jpg)"><div><p><b>Lageder  Thomas</b><br/>FL<br/>05.02.1980</p><ul><li class="email"><a href="mailto:thomas.lageder@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Lageder  Thomas</a></div></div>
+                
+                    <div id="content_repMembersOL_div_7" class="member" data-id="172"><div class="pic fbp" data-id="172" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/wendelin_lampert.jpg)"><div><p><b>Lampert  Wendelin</b><br/>FBP<br/>21.04.1970</p><ul><li class="email"><a href="mailto:wendelin.lampert@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Lampert  Wendelin</a></div></div>
+                
+                    <div id="content_repMembersOL_div_8" class="member" data-id="119"><div class="pic fbp" data-id="119" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/eugen_naegele.jpg)"><div><p><b>Nägele Eugen</b><br/>FBP<br/>10.08.1964</p><ul><li class="email"><a href="mailto:eugen.naegele@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Nägele Eugen</a></div></div>
+                
+                    <div id="content_repMembersOL_div_9" class="member" data-id="174"><div class="pic du" data-id="174" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/harry_quaderer.jpg)"><div><p><b>Quaderer  Harry</b><br/>DU<br/>07.09.1959</p><ul><li class="email"><a href="mailto:harry.quaderer@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Quaderer  Harry</a></div></div>
+                
+                    <div id="content_repMembersOL_div_10" class="member" data-id="122"><div class="pic vu" data-id="122" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/karin_ruedisser_quaderer.jpg)"><div><p><b>Rüdisser-Quaderer Karin</b><br/>VU<br/>15.05.1958</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Rüdisser-Quaderer Karin</a></div></div>
+                
+                    <div id="content_repMembersOL_div_11" class="member" data-id="123"><div class="pic du" data-id="123" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/pius_schurti.jpg)"><div><p><b>Schurti Pio</b><br/>DU<br/>08.06.1964</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Schurti Pio</a></div></div>
+                
+                    <div id="content_repMembersOL_div_12" class="member" data-id="124"><div class="pic vu" data-id="124" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/thomas_vogt.jpg)"><div><p><b>Vogt Thomas</b><br/>VU<br/>24.02.1976</p><ul><li class="email"><a href="mailto:thomas.vogt@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Vogt Thomas</a></div></div>
+                
+                    <div id="content_repMembersOL_div_13" class="member" data-id="125"><div class="pic vu" data-id="125" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/christoph_wenaweser.jpg)"><div><p><b>Wenaweser Christoph</b><br/>VU<br/>13.06.1963</p><ul><li class="email"><a href="mailto:christoph.wenaweser@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Wenaweser Christoph</a></div></div>
+                
+                    <div id="content_repMembersOL_div_14" class="member" data-id="126"><div class="pic fbp" data-id="126" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/christine_wohlwend.jpg)"><div><p><b>Wohlwend  Christine</b><br/>FBP<br/>31.07.1978</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Wohlwend  Christine</a></div></div>
+                
+                    <br class="clearing" /></div>
+                
+
+            
+                    <div>
+                    <h3>Unterland</h3>
+                
+                    <div id="content_repMembersUL_div_0" class="member" data-id="154"><div class="pic fbp" data-id="154" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/manfred_batliner.jpg)"><div><p><b>Batliner  Manfred</b><br/>FBP<br/>01.10.1963</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Batliner  Manfred</a></div></div>
+                
+                    <div id="content_repMembersUL_div_1" class="member" data-id="107"><div class="pic vu" data-id="107" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/peter_buechel.jpg)"><div><p><b>Büchel Peter</b><br/>VU<br/>02.08.1958</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Büchel Peter</a></div></div>
+                
+                    <div id="content_repMembersUL_div_2" class="member" data-id="108"><div class="pic du" data-id="108" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/herbert_elkuch.jpg)"><div><p><b>Elkuch Herbert</b><br/>DU<br/>30.12.1952</p><ul><li class="email"><a href="mailto:herbert.elkuch@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Elkuch Herbert</a></div></div>
+                
+                    <div id="content_repMembersUL_div_3" class="member" data-id="164"><div class="pic fbp" data-id="164" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/rainer_gopp.jpg)"><div><p><b>Gopp  Rainer</b><br/>FBP<br/>01.08.1971</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Gopp  Rainer</a><br/><em>*Ab 21.1.2016 in Folge Rücktritts von Gerold Büchel.</em></div></div>
+                
+                    <div id="content_repMembersUL_div_4" class="member" data-id="110"><div class="pic fbp" data-id="110" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/elfried_hasler.jpg)"><div><p><b>Hasler Elfried</b><br/>FBP<br/>11.06.1965</p><ul><li class="email"><a href="mailto:elfried.hasler@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Hasler Elfried</a></div></div>
+                
+                    <div id="content_repMembersUL_div_5" class="member" data-id="111"><div class="pic du" data-id="111" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/erich_hasler.jpg)"><div><p><b>Hasler Erich</b><br/>DU<br/>28.12.1956</p><ul><li class="email"><a href="mailto:erich.hasler@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Hasler Erich</a></div></div>
+                
+                    <div id="content_repMembersUL_div_6" class="member" data-id="167"><div class="pic fbp" data-id="167" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/kaiser_johannes_neu_aus_2009.jpg)"><div><p><b>Kaiser  Johannes</b><br/>FBP<br/>29.06.1958</p><ul><li class="email"><a href="mailto:johannes.kaiser@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Kaiser  Johannes</a></div></div>
+                
+                    <div id="content_repMembersUL_div_7" class="member" data-id="117"><div class="pic vu" data-id="117" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/violanda_lanter_keller.jpg)"><div><p><b>Lanter-Koller  Violanda</b><br/>VU<br/>01.01.1964</p><ul><li class="email"><a href="mailto:violanda.lanter-koller@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Lanter-Koller  Violanda</a></div></div>
+                
+                    <div id="content_repMembersUL_div_8" class="member" data-id="118"><div class="pic fl" data-id="118" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/wolfgang_marxer_634995651773507500.jpg)"><div><p><b>Marxer Wolfgang</b><br/>FL<br/>04.11.1960</p><ul><li class="email"><a href="mailto:wolfgang.marxer@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Marxer Wolfgang</a></div></div>
+                
+                    <div id="content_repMembersUL_div_9" class="member" data-id="120"><div class="pic vu" data-id="120" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/judith_oehri.jpg)"><div><p><b>Oehri Judith</b><br/>VU<br/>21.05.1968</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Oehri Judith</a></div></div>
+                
+                    <br class="clearing" /></div>
+                
+
+            <h2>Stellvertreter der Abgeordneten</h2>
+            
+                    <div>
+                    <h3>Oberland</h3>
+                
+                    <div id="content_repDeputyOL_div_0" class="member" data-id="127"><div class="pic fbp" data-id="127" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/helmuth_buechel.jpg)"><div><p><b>Büchel Helmuth</b><br/>FBP<br/>25.03.1957</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Büchel Helmuth</a></div></div>
+                
+                    <div id="content_repDeputyOL_div_1" class="member" data-id="129"><div class="pic fl" data-id="129" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/andreas_heeb.jpg)"><div><p><b>Heeb Andreas</b><br/>FL<br/>23.04.1977</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Heeb Andreas</a></div></div>
+                
+                    <div id="content_repDeputyOL_div_2" class="member" data-id="130"><div class="pic vu" data-id="130" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/manfred_kaufmann.jpg)"><div><p><b>Kaufmann Manfred</b><br/>VU<br/>09.10.1978</p><ul><li class="email"><a href="mailto:manfred.kaufmann@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Kaufmann Manfred</a></div></div>
+                
+                    <div id="content_repDeputyOL_div_3" class="member" data-id="132"><div class="pic fbp" data-id="132" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/norman_marxer.jpg)"><div><p><b>Marxer Norman</b><br/>FBP<br/>25.07.1960</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Marxer Norman</a></div></div>
+                
+                    <div id="content_repDeputyOL_div_4" class="member" data-id="133"><div class="pic du" data-id="133" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/thomas_rehak.jpg)"><div><p><b>Rehak Thomas</b><br/>DU<br/>21.01.1971</p><ul><li class="email"><a href="mailto:thomas.rehak@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Rehak Thomas</a></div></div>
+                
+                    <br class="clearing" /></div>
+                
+            
+                    <div>
+                    <h3>Unterland</h3>
+                
+                    <div id="content_repDeputyUL_div_0" class="member" data-id="170"><div class="pic vu" data-id="170" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/werner_kranz.jpg)"><div><p><b>Kranz  Werner</b><br/>VU<br/>08.02.1965</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Kranz  Werner</a></div></div>
+                
+                    <div id="content_repDeputyUL_div_1" class="member" data-id="198"><div class="pic fbp" data-id="198" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/hubert_lampert.jpg)"><div><p><b>Lampert Hubert</b><br/>FBP<br/>31.03.1968</p><ul><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Lampert Hubert</a></div></div>
+                
+                    <div id="content_repDeputyUL_div_2" class="member" data-id="134"><div class="pic fl" data-id="134" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/patrick_risch.jpg)"><div><p><b>Risch Patrick</b><br/>FL<br/>27.09.1968</p><ul><li class="email"><a href="mailto:patrick.risch@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Risch Patrick</a></div></div>
+                
+                    <div id="content_repDeputyUL_div_3" class="member" data-id="135"><div class="pic du" data-id="135" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/peter_wachter.jpg)"><div><p><b>Wachter Peter</b><br/>DU<br/>04.09.1949</p><ul><li class="email"><a href="mailto:peter.wachter@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Wachter Peter</a></div></div>
+                
+                    <br class="clearing" /></div>
+                
+
+            
+                    <div>
+                    <h2>Ausgeschieden</h2>
+                    <h3>Unterland</h3>
+                
+                    <div id="content_repResigned_div_0" class="member" data-id="159"><div class="pic fbp" data-id="159" style="background-image:url(http://landtaglive.gmgnet.li/files/attachments/gerold_buechel.jpg)"><div><p><b>Büchel  Gerold</b><br/>FBP<br/>14.06.1974</p><ul><li class="email"><a href="mailto:gerold.buechel@landtag.li">E-Mail senden</a></li><li class="func"><a>Funktionen</a></li></ul></div></div><div class="name"><a>Büchel  Gerold</a><br/><em>* Zurückgetreten am 31.12.2015 aufgrund von Wohnsitzwechsels in den Oberland-Wahlkreis.</em></div></div>
+                
+                    <br class="clearing" /></div>
+                
+        </div>
+    </div>
+
+                    </section>
+                </div>
+                <aside class="grad-1">
+                    <div class="inner">
+                        
+
+                        
+                    </div>
+                </aside>
+                <!--br class="clearing" /-->
+            </main>
+            <!--br class="clearing" /-->
+            <footer class="footer">
+                <p>Landtag des Fürstentums Liechtenstein -- Postfach 684 -- Peter-Kaiser-Platz 3 -- Tel. +423 / 236 65 71 -- Fax +423 / 236 65 80 -- info@landtag.li</p>
+            </footer>
+        </div>
+        
+        <!-- bottom includes -->
+        <script type="text/javascript" src="/scripts/gmg.util.js"></script>
+        <script type="text/javascript" src="/scripts/gmg.input.js"></script>
+        <script type="text/javascript" src="/scripts/gmg.detect.js"></script>
+        <script type="text/javascript" src="/scripts/jquery.cookie.js"></script>
+        <script type="text/javascript" src="/scripts/landtag-master.js"></script>
+
+        
+   
+    <div id="iframebox">
+        <div id="overlay-frame" class="lightbox_overlay"></div>
+        <div class="lightbox">
+            <div class="content">
+                <iframe id="iframe" frameborder="0px" onload="resizeFrame(this)" seamless></iframe>
+            </div>
+        </div>
+    </div>
+
+     <script type="text/javascript">
+         $(document).ready(function () {
+
+             $('.ddyears,.ddyearsm').change(function (e) {
+                 location.href = '/abgeordnete/?jahr=' + $(this).val().split('.')[2];
+             });
+
+             $('.member').mouseenter(function (e) {
+                 var elem = $(this).find(".pic > div");
+                 elem.animate({ 'bottom': '0em' }, { queue: false, duration: 300 });
+             });
+
+             $('.member').mouseleave(function (e) {
+                 var elem = $(this).find(".pic > div");
+                 elem.animate({ 'bottom': '-30em' }, { queue: false, duration: 300 });
+             });
+
+ 
+             $('.member a').click(function (e) {
+                 e.stopPropagation();
+             });
+
+             $('.member').click(function (e) {
+
+                 var a = $(this).find('.name a[href]');
+
+                 if (a.length > 0) {
+                     location.href = a.attr('href');
+                 }
+                 
+             });
+
+
+             $('.func a').click(function (e) {
+                 openFrame('/dialogs/functions.aspx?pid=' + $(this).closest('.pic').attr('data-id'));
+             });
+
+         });
+         </script>
+
+        <nav id="menu" class="mobile"><ul><li class="search"><input type="text" data-default="Suche" /><a></a></li><li data-id="4044" class="withchild"><a href="/funktion">Landtag</a><ul><li class="head"><h2>Landtag</h2></li><li data-id="4045" ><a href="/funktion">Funktion</a></li><li data-id="4049" ><a href="/organisation">Organisation</a></li><li data-id="4052" ><a href="/sitzordnung">Sitzordnung</a></li><li data-id="4053" ><a href="/rechtliche-grundlagen">Rechtliche Grundlagen</a></li><li data-id="4055" ><a href="/landtagswahlen">Landtagswahlen</a></li><li data-id="4141" ><a href="/instrumente-der-abgeordneten">Instrumente der Abgeordneten</a></li><li data-id="4056" ><a href="/landtagsgebaeude">Landtagsgebäude</a></li><li data-id="4060" ><a href="/aktuelles">Aktuelles</a></li><li data-id="4057" ><a href="/geschichte">Geschichte</a></li></ul></li><li data-id="4061" class="withchild"><a href="/abgeordnete">Mitglieder</a><ul><li class="head"><h2>Mitglieder</h2></li><li data-id="4158" ><a href="/abgeordnete">Abgeordnete</a></li><li data-id="4159" ><a href="/praesidenten">Präsidenten</a></li></ul></li><li data-id="4062" class="withchild"><a href="/gremien">Gremien</a><ul><li class="head"><h2>Gremien</h2></li><li data-id="4063" ><a href="/kommissionen">Kommissionen</a></li><li data-id="4067" ><a href="/delegationen">Delegationen</a></li><li data-id="4068" ><a href="/berichte">Berichte</a></li></ul></li><li data-id="4069" class="withchild"><a href="/agenda">Agenda</a><ul><li class="head"><h2>Agenda</h2></li><li data-id="4142" ><a href="http://www.landtag.li/protokolle/?nid=4089&amp;groupnr=4089&amp;lang=de">Landtagsprotokolle</a></li><li data-id="4143" ><a href="/beschluesse">Beschlüsse</a></li></ul></li><li data-id="4070" class="withchild"><a href="/landtagsprotokolle">Dokumentation</a><ul><li class="head"><h2>Dokumentation</h2></li><li data-id="4071" ><a href="/landtagsprotokolle">Landtagsprotokolle</a></li><li data-id="4072" ><a href="/beschluesse">Beschlüsse</a></li><li data-id="4073" ><a href="/berichte-und-antraege-der-regierung">Berichte und Anträge der Regierung</a></li><li data-id="4074" ><a href="/parlamentarische-eingaenge">Parlamentarische Eingänge</a></li><li data-id="4300" ><a href="/aktuelle-stunde">Aktuelle Stunde</a></li><li data-id="4350" ><a href="/kleine-anfragen">Kleine Anfragen</a></li><li data-id="4076" ><a href="/audiofiles">Audiofiles</a></li><li data-id="4077" ><a href="/berichte">Berichte</a></li><li data-id="4078" ><a href="/thronreden">Thronreden</a></li><li data-id="5455" ><a href="/ansprachen">Ansprachen</a></li><li data-id="4079" ><a href="/landtagswahlen-dokumentation">Landtagswahlen</a></li></ul></li><li data-id="4080" class="withchild"><a href="/service">Service</a><ul><li class="head"><h2>Service</h2></li><li data-id="4081" ><a href="/parlamentsdienst">Parlamentsdienst</a></li><li data-id="4083" ><a href="/kontakt">Kontakt</a></li><li data-id="4084" ><a href="/besuche-fuehrungen">Besuche & Führungen</a></li><li data-id="4085" ><a href="/presseinformationen">Presseinformationen</a></li><li data-id="4086" ><a href="/fernsehuebertragungen">Fernsehübertragungen</a></li><li data-id="4087" ><a href="/links">Links</a></li><li data-id="4157" ><a href="/broschuere">Broschüre</a></li></ul></li><li class="quick"><a href="/login" target="_self">Login</a><br/><a href="/lageplan" target="_self">Lageplan</a><br/><a href="/kontakt" target="_self">Kontakt</a><br/><a href="/sitemap" target="_self">Sitemap</a><br/><a href="/links" target="_self">Links</a><br/><a href="/impressum" target="_self">Impressum</a><br/><a href="http://bf.gmg.biz/default.aspx?prid=13&amp;nid=4042&amp;groupnr=4042&amp;lang=de" target="_blank">Barrierefreiheit</a><br/></li></ul></nav>
+    </form>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+         $('.sublinks li[data-id="4158"], .sidelinks li[data-id="4158"]').attr('class', 'active');  $('.mainlinks li[data-id="4061"], .sidelinks li[data-id="4061"]').attr('class', 'active'); 
+    });
+</script>
