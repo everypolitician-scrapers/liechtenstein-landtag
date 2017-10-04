@@ -61,6 +61,10 @@ class MemberDiv < Scraped::HTML
     url
   end
 
+  field :identifier__landtag do
+    id
+  end
+
   private
 
   # http://www.landtag.li/scripts/landtag-master.js?t=3 contains the
