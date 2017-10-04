@@ -34,7 +34,7 @@ class MemberDiv < Scraped::HTML
   end
 
   field :email do
-    noko.css('.email a/@href').text.sub('mailto:', '')
+    EMAIL_EXTRAS.reduce(raw_email) { |email, str| email.sub(str, '') }
   end
 
   field :party do
@@ -62,6 +62,17 @@ class MemberDiv < Scraped::HTML
   end
 
   private
+
+  # http://www.landtag.li/scripts/landtag-master.js?t=3 contains the
+  # replacement codes. Assume for now that these are static. If they're
+  # not, we'll need to fetch this and replace them dynamically.
+  EMAIL_EXTRAS = %w[
+    fss32ixh kvx7n3i7 p6gktryw kvx7n3i7 93Fu2 fss32ixh kvx7n3i7 p6gktryw kvx7n3i7 93Fu2
+  ]
+
+  def raw_email
+    noko.css('.email a/@href').text.sub('mailto:', '')
+  end
 
   def popup
     noko.at_css('.pic div p').children.map(&:text).reject(&:empty?)
