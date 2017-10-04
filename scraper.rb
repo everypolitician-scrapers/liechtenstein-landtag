@@ -74,7 +74,7 @@ def scrape_list(termid, url)
     mem.to_h.merge(term: termid)
   end
 
-  # puts data.map { |mem| mem.reject { |k, v| v.to_s.empty? }.sort_by { |k, v| k }.to_h }
+  data.each { |mem| puts mem.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h } if ENV['MORPH_DEBUG']
   ScraperWiki.save_sqlite(%i(name term), data)
 end
 
