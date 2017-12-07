@@ -25,21 +25,19 @@ response:
     - text/html; charset=utf-8
     Expires:
     - "-1"
-    Vary:
-    - Accept-Encoding
     Server:
     - Microsoft-IIS/7.5
     Set-Cookie:
-    - ASP.NET_SessionId=ljr52efomueqydr4ky3cw3da; path=/; HttpOnly
+    - ASP.NET_SessionId=p3anmr3kwpfeycssd534kbfu; path=/; HttpOnly
     X-Aspnet-Version:
     - 4.0.30319
     X-Powered-By:
     - ASP.NET
     Date:
-    - Wed, 06 Dec 2017 01:22:53 GMT
+    - Thu, 07 Dec 2017 00:43:18 GMT
     Content-Length:
-    - '9990'
+    - '38288'
   body:
     encoding: ASCII-8BIT
   http_version: 
-recorded_at: Wed, 06 Dec 2017 01:22:51 GMT
+recorded_at: Thu, 07 Dec 2017 00:43:17 GMT
