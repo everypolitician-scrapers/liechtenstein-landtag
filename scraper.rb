@@ -93,10 +93,10 @@ def scrape_list(termid, url)
 end
 
 terms = {
-  2017 => 'http://www.landtag.li/abgeordnete/?jahr=2017',
-  2013 => 'http://www.landtag.li/abgeordnete/?jahr=2013',
-  2009 => 'http://www.landtag.li/abgeordnete/?jahr=2009',
-  2005 => 'http://www.landtag.li/abgeordnete/?jahr=2005',
+  2017 => 'https://www.landtag.li/abgeordnete/?jahr=2017',
+  2013 => 'https://www.landtag.li/abgeordnete/?jahr=2013',
+  2009 => 'https://www.landtag.li/abgeordnete/?jahr=2009',
+  2005 => 'https://www.landtag.li/abgeordnete/?jahr=2005',
 }
 
 ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
