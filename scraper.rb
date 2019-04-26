@@ -29,7 +29,7 @@ class MemberDiv < Scraped::HTML
   end
 
   field :image do
-    noko.css('.pic @style').text[/(http:.*?.(jpg|png))/, 1]
+    noko.css('.pic @style').text[/(https?:.*?.(jpg|png))/, 1]
   end
 
   field :email do
